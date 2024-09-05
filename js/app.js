@@ -31,7 +31,9 @@ let board, turn, winner, tie;
 
  
 /*---------------------------- Variables (state) ----------------------------*/
-board = ["","","","","","","","",""]
+board = ["1","2","3",
+        "4","5","6",
+        "7","8","9"]
 // console.log(board.length)
 
 turn = "X"
@@ -47,33 +49,53 @@ tie = false
 /*------------------------ Cached Element References ------------------------*/
 
 const squareEls = document.querySelectorAll('.sqr')
-// console.log(squareEls)
+// console.dir(squareEls)
 
 const messageEl =  document.querySelector('#message')
 // console.log(messageEl)
 
 /*-------------------------------- Functions --------------------------------*/
-function init()  {
-//  console.log("init used")
-    render() 
-}
 
-function render(){
 
-}
 
 function updateBoard(){
-    board.forEach(() => {
-        board.shift()
-        board.push("X")
-        // board.splice(sq,1,"X")
-        console.log("loop!")
+    board.forEach((turn,index) => {
+        //Turn is the value of board at index "index"
+        console.log(squareEls[index])
+        squareEls[index].innerText = turn
     })
 }
 
-updateBoard()
-console.log(board)
-// init()
 
+function updateMessage(){
+    if (!winner && !tie){
+        // render(turn) 
+        // placeholder
+        console.log("not a winnder or tie")
+    } else if (!winner && tie){
+        // render(tieMessage)
+        // placeholder
+        console.log("It's a Tie!")
+    } else {
+        // render(winningmessage)
+        //placeholder
+        console.log("YOUR WINNER")
+    }
+}
+
+function render(){
+    updateBoard()
+    updateMessage()
+}
+
+function init()  {
+//  console.log("init used")
+    render()
+}
+
+init()
+
+
+// updateMessage()
 /*----------------------------- Event Listeners -----------------------------*/
 
