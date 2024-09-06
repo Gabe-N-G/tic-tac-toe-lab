@@ -87,7 +87,7 @@ function handleClick(event){
     // console.log(event.target.id)
     const squareIndex = event.target.id
     placePiece(squareIndex)
-    if (board[squareIndex] === "X" || "O"){
+    if (board[squareIndex] === "X" || board[squareIndex] ===  "O"){
         return
     } if (winner === true){
         return
@@ -101,6 +101,34 @@ function updateBoard(){
         squareEls[index].innerText = turn
     })
 }
+
+/*
+Check the following for each of the eight winning combinations:
+Check to see if the value held in the first position is not an empty string ''.
+Also, check to see if the value held in the first position equals the value held in the second position.
+Also, check to see if the value held in the first position equals the value held in the third position.
+If those three conditions are all true, then someone has won.
+    Winning combos.
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [6,4,2],
+
+*/
+
+// //my failed attempt
+// function checkForWinner(){
+//     if (board[0] != "" || board[3]!= "" || board[6] != "" || board[2] != "" || board[1] != ""){
+//             if(board[0] === board[1] ||board[0] === board[3] || board[0] === board[4] || board[3] === board[4] 
+//             || board[6] === board[7] || board[1]=== board[4]|| board[2] === board[5]|| board[6]=== board[4]) {
+//                 if(board[0]) 
+//                 }
+//             }
+//         }
 
 
 function updateMessage(){
