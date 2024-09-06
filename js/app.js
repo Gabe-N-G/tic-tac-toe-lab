@@ -42,9 +42,9 @@ const winningCombos =[
 
  
 /*---------------------------- Variables (state) ----------------------------*/
-board = ["X","1","2",
-        "3","4","5",
-        "6","7","8"]
+board = ["","","",
+        "","","",
+        "","",""]
 
 /*
     VISUALIZE THE BOARD + INDEXES
@@ -59,7 +59,7 @@ turn = "X"
 
 // 💡 A false value in winner means that there is no winner yet. A value of true in winner will mean that a player has won.
 // Once winner is set to true, we can determine which player won by whose turn it was when the winning move was played.
-winner = true
+winner = false
 
 
 // 💡 A true value in tie will mean that the board array contains no more empty strings ('') and will be used to render a tie message if winner is still false by the time all squares are played.
@@ -75,9 +75,18 @@ const messageEl =  document.querySelector('#message')
 
 /*-------------------------------- Functions --------------------------------*/
 
+init()
+
+function placePiece(index){
+    board[index] = turn
+    console.log(board)
+}
+
+
 function handleClick(event){
-    console.log(event.target.id)
+    // console.log(event.target.id)
     const squareIndex = event.target.id
+    placePiece(squareIndex)
     if (board[squareIndex] === "X" || "O"){
         return
     } if (winner === true){
@@ -88,7 +97,7 @@ function handleClick(event){
 function updateBoard(){
     board.forEach((turn,index) => {
         //Turn is the value of board at index "index"
-        console.log(squareEls[index])
+        // console.log(squareEls[index])
         squareEls[index].innerText = turn
     })
 }
@@ -116,11 +125,11 @@ function render(){
 }
 
 function init()  {
-//  console.log("init used")
+ console.log("init used")
     render()
 }
 
-init()
+
 
 
 // updateMessage()
